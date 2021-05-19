@@ -1,0 +1,40 @@
+<form [formGroup]="formGroup" *ngIf="formGroup" class="row m-4">
+  <!--<span class="text-danger" *ngIf="formGroup.get('userName')?.errors">
+    Erro!
+    <span *ngIf="formGroup.get('userName')?.errors"> Campo Obrigatório! </span>
+  </span>-->
+
+  <div class="col-md-3 form-group">
+    <label class="form-control-label">UserName</label>
+    <input type="text" class="form-control input-sm" formControlName="userName" />
+    <span
+      *ngIf=" (userName?.dirty || userName?.touched) 
+              && userName?.invalid && userName?.errors?.required"
+    >
+      Username is required!
+    </span>
+  </div>
+
+  <div class="col-md-9 form-group">
+    <label class="form-control-label">Nome</label>
+    <input type="text" class="form-control input-sm" formControlName="name" />
+  </div>
+
+  <div class="col-md-3 form-group">
+    <label class="form-control-label">Senha</label>
+    <input
+      type="password"
+      class="form-control input-sm"
+      formControlName="password"
+    />
+  </div>
+
+  <div class="col-md-6 form-group">
+    <label class="form-control-label">Email</label>
+    <input type="email" class="form-control input-sm" formControlName="email" />
+  </div>
+
+  <div class="col-md-12">
+    <button class="btn btn-success" (click)="salvar()">Salvar</button>
+  </div>
+</form>
